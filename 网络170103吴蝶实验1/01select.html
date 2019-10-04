@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{margin:0px; padding:0px;}
+        body{font-size:14px;}
+        #app{width:1000px; margin:10px auto;}
+        #bigImg{float:left; margin-right:10px;}
+        .item{
+            width:340px;
+            line-height:30px;
+            box-sizing: border-box;
+            background:#f7f7f7;
+            border:1px solid #f7f7f7;
+            margin:10px 0px;
+            float:left;
+        }
+        .item img{vertical-align:middle; margin-right:10px;}
+        .select{ border:1px solid darkred;}
+    </style>
+    <script src="vue2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+    <img id="bigImg" :src="list[current].img" style="width: 400px; height: 400px"/>
+    <p>颜色选择</p>
+    <div v-for="(item,index) in list" :key="index" @click="Click(index)" :class=['item',{'select':current==index}] ><img :src='list.img'/>{{item.name}}</div>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                list:[
+                    {
+                        img:'img/01.jpg',
+                        name:'日系珍珠扣可拆卸背带裙，半身裙中长裙'
+                    },
+                    {
+                        img:'img/02.jpg',
+                        name:'春夏日系学院风百褶裙格子半身裙A字裙'
+                    },
+                    {
+                        img:'img/03.jpg',
+                        name:'英伦复古学院风菱格 开衫针织衫宽松长袖'
+                    },
+                    {
+                        img:'img/04.jpg',
+                        name:'慵懒风日系宽松显瘦粗针织衫开衫外套'
+                    }
+                ],
+                current:0
+            }
+        },
+        methods:{
+            Click(index){
+                this.current=index;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
